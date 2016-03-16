@@ -1,0 +1,58 @@
+@import '../styles/mixin';
+
+.main-ctrl {
+  @include full-screen;
+  aside {
+    position: relative;
+    z-index: 1;
+    width: $aside-width;
+    border-right: 1px solid $border-color;
+    height: 100%;
+    .top {
+      width: 100%;
+      border-bottom: 1px solid $border-color;
+      height: $top-height;
+    }
+    .mid {
+      width: 100%;
+      height: calc(100% - #{$top-height});
+      overflow: scroll;
+      a.memo-preview {
+        padding: 12px;
+        display: block;
+        text-decoration: none;
+        @include transition(background-color 0.2s ease-out);
+        &:hover {
+          background-color: $personal-light;
+        }
+        &.active {
+          background-color: $personal;
+        }
+        .memo-preview-title {
+          font-size: 16px;
+          margin-bottom: 4px;
+          color: $text-black;
+          @include ellipsis;
+        }
+        .memo-preview-body {
+          font-size: 14px;
+          color: $text-gray;
+          @include ellipsis;
+        }
+      }
+    }
+  }
+  .body {
+    @include full-screen;
+    padding-left: $aside-width;
+    .top {
+      width: 100%;
+      height: $top-height;
+      border-bottom: 1px solid $border-color;
+    }
+    .mid {
+      width: 100%;
+      height: calc(100% - #{$top-height});
+    }
+  }
+}

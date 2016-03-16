@@ -1,0 +1,32 @@
+@import '../../styles/mixin';
+
+.index-ctrl {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  .center-container {
+    font-size: 36px;
+    color: $text-gray-light;
+    text-align: center;
+    width: 100%;
+    @include vertical-center;
+    p {
+      margin: 0 0 24px 0;
+    }
+  }
+  a.button {
+    display: inline-block;
+    padding: 0 16px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    background-color: $personal;
+    @include border-radius(2px);
+    @include transition(background-color 0.2s ease-out);
+    &:hover {
+      background-color: $personal-dark;
+    }
+  }
+}

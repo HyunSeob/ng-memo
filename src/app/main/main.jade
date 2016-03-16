@@ -1,0 +1,16 @@
+.main-ctrl(ng-controller="MainController")
+  aside
+    .top
+      select
+        option(ng-repeat="label in main.labels") {{ label.name }}
+    .mid
+      a.memo-preview(
+        ng-repeat="memo in main.memos"
+        ng-class="{ active: memo.id === main.activeMemoId }"
+        ui-sref="main.memo({ id: memo.id })")
+        .memo-preview-title {{ memo.title }}
+        .memo-preview-body {{ memo.body }}
+  .body
+    .top
+    .mid(ui-view="")
+      

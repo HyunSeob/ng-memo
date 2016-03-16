@@ -1,0 +1,49 @@
+$personal: #5CD1E3;
+$personal-light: lighten($personal, 32);
+$personal-dark: darken($personal, 25);
+$border-color: #eee;
+$text-black: #333;
+$text-gray: #555;
+$text-gray-light: #ccc;
+$aside-width: 300px;
+$top-height: 48px;
+
+@mixin transition($transitions...) {
+  -moz-transition:    $transitions;
+  -o-transition:      $transitions;
+  -webkit-transition: $transitions;
+  transition:         $transitions;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -ms-transform:     $transform;
+  transform:         $transform;
+}
+
+@mixin ellipsis {
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin full-screen {
+  position: absolute;
+  left:     0;
+  right:    0;
+  top:      0;
+  bottom:   0;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius:    $radius;
+  -ms-border-radius:     $radius;
+  border-radius:         $radius;
+}
+
+@mixin vertical-center {
+  position: absolute;
+  top:      50%;
+  @include transform(translateY(-50%));
+}

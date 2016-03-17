@@ -1,12 +1,8 @@
 class MainMemoController {
   constructor($scope, $stateParams) {
     'ngInject';
-    // console.log($stateParams.id);
     $scope.$parent.$parent.main.activeMemoId = $stateParams.id;
-    let memo = this.getSampleMemo($scope, $stateParams.id);
-    this.id = $stateParams.id;
-    this.title = memo.title;
-    this.body = memo.body;
+    this.item = this.getSampleMemo($scope, $stateParams.id);
   }
 
   getSampleMemo($scope, id) {

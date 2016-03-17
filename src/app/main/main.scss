@@ -18,18 +18,19 @@
       height: calc(100% - #{$top-height});
       overflow: scroll;
       a.memo-preview {
-        padding: 12px;
+        padding: 24px;
         display: block;
         text-decoration: none;
         @include transition(background-color 0.2s ease-out);
         &:hover {
-          background-color: $personal-light;
+          background-color: $personal-superlight;
         }
         &.active {
-          background-color: $personal;
+          background-color: $personal-light;
         }
         .memo-preview-title {
           font-size: 16px;
+          height: 20px;
           margin-bottom: 4px;
           color: $text-black;
           @include ellipsis;
@@ -37,6 +38,7 @@
         .memo-preview-body {
           font-size: 14px;
           color: $text-gray;
+          height: 18px;
           @include ellipsis;
         }
       }
@@ -46,9 +48,29 @@
     @include full-screen;
     padding-left: $aside-width;
     .top {
-      width: 100%;
-      height: $top-height;
+      width: calc(100% - 24px);
+      height: calc(#{$top-height} - 16px);
       border-bottom: 1px solid $border-color;
+      padding: 8px 12px;
+      button.personal-button {
+        height: 30px;
+        line-height: 30px;
+        padding: 0 12px;
+        font-size: 14px;
+        @include personal-button;
+      }
+      button.icon-button {
+        display: block;
+        color: $text-gray-semilight;
+        font-size: 18px;
+        padding: 0 8px;
+        height: 30px;
+        @include text-button;
+        @include transition(color 0.2s ease-out);
+        &:hover {
+          color: $personal;
+        }
+      }
     }
     .mid {
       width: 100%;

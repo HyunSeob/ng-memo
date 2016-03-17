@@ -1,9 +1,11 @@
 $personal: #5CD1E3;
-$personal-light: lighten($personal, 32);
+$personal-light: lighten($personal, 27);
+$personal-superlight: lighten($personal, 33);
 $personal-dark: darken($personal, 25);
 $border-color: #eee;
 $text-black: #333;
 $text-gray: #555;
+$text-gray-semilight: #999;
 $text-gray-light: #ccc;
 $aside-width: 300px;
 $top-height: 48px;
@@ -46,4 +48,30 @@ $top-height: 48px;
   position: absolute;
   top:      50%;
   @include transform(translateY(-50%));
+}
+
+@mixin text-button {
+  background: none;
+  border: 0;
+  outline: 0;
+}
+
+@mixin personal-button {
+  color: #fff;
+  background-color: $personal;
+  border: 0;
+  cursor: pointer;
+  @include border-radius(2px);
+  @include transition(background-color 0.2s ease-out);
+  &:hover {
+    background-color: $personal-dark;
+  }
+}
+
+@mixin placeholder {
+  &:empty:before {
+    content: attr(placeholder);
+    display: block;
+    color: $text-gray-light;
+  }
 }

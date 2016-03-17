@@ -8,9 +8,16 @@
         ng-repeat="memo in main.memos"
         ng-class="{ active: memo.id === main.activeMemoId }"
         ui-sref="main.memo({ id: memo.id })")
-        .memo-preview-title {{ memo.title }}
-        .memo-preview-body {{ memo.body }}
+        .memo-preview-title {{ memo.title ? memo.title : '제목을 입력하세요.' }}
+        .memo-preview-body {{ memo.body ? memo.body : '본문을 입력하세요.' | plainText }}
   .body
     .top
+      button.pull-left.icon-button(ng-click="main.addMemo()")
+        i.fa.fa-plus-square-o
+      button.pull-left.icon-button(
+        ng-hide="main.$state.is('main.index')"
+        ng-click="main.removeMemo()")
+        i.fa.fa-trash-o
+      button.pull-right.personal-button(ng-hide="main.$state.is('main.index')") 저장하기
     .mid(ui-view="")
       

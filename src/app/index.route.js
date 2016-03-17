@@ -13,10 +13,10 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/main/index/index.html'
     })
     .state('main.memo', {
-      url: '/:id',
+      url: ':id',
       templateUrl: 'app/main/memo/memo.html',
       controller: 'MainMemoController',
       controllerAs: 'memo'
     });
-  $urlRouterProvider.otherwise('/');
+  // $urlRouterProvider.otherwise('/');
 }

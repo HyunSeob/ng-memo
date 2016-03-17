@@ -1,3 +1,4 @@
 .memo-ctrl
-  .memo-title {{ memo.title }}
-  .memo-body {{ memo.body }}
+  input.memo-title(ng-model="memo.item.title" placeholder="제목을 입력하세요.")
+  .memo-body(ng-model="memo.item.body" contenteditable="true" placeholder="본문을 입력하세요.")
+  .memo-labels(contenteditable="true" placeholder="라벨을 입력하세요." label-handler)

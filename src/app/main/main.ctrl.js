@@ -1,11 +1,13 @@
 export class MainController {
-  constructor($state, toastr, Memo, $scope) {
+  constructor($scope, $state, toastr, Memo, Label) {
     'ngInject';
-    this.$state = $state;
-    this.Memo = Memo;
-    this.toastr = toastr;
     this.$scope = $scope;
+    this.$state = $state;
+    this.toastr = toastr;
+    this.Memo = Memo;
+    this.Label = Label;
     this.loadMemos();
+    this.loadLabels();
   }
 
   loadMemos() {
@@ -17,6 +19,12 @@ export class MainController {
     }).catch(function() {
       main.toastr.error('메모 목록을 불러오는데 실패했습니다.');
     });
+  }
+
+  loadLabels() {
+    this.Label.query()
+    .$promise.then((labels) => this.labels = labels)
+    .catch(() => this.toastr.error('라벨 목록을 불러오는데 실패했습니다.'));
   }
 
   addMemo() {
@@ -66,5 +74,5 @@ export class MainController {
   }
 }
 
-MainController.$inject = ['$state', 'toastr', 'Memo', '$scope'];
+MainController.$inject = ['$scope', '$state', 'toastr', 'Memo', 'Label'];
 export default MainController;

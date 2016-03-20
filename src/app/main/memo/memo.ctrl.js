@@ -1,5 +1,5 @@
 class MainMemoController {
-  constructor($scope, $stateParams, toastr, Memo) {
+  constructor($scope, $stateParams, toastr) {
     'ngInject';
     let mainScope = $scope.$parent.$parent.main;
     if(mainScope.memos) {
@@ -27,21 +27,31 @@ class MainMemoController {
     if (newLabel && this.item.Labels.length >= 10) {
       this.toastr.warning('라벨은 10개를 초과해서 달 수 없습니다.');
     } else if (newLabel) {
-      if (this.item.Labels.indexOf(newLabel) > -1) {
+      if (this.indexOfLabel(newLabel) > -1) {
         this.toastr.warning('중복된 라벨이름을 사용할 수 없습니다.');
       } else {
-        this.item.Labels.push(newLabel);
+        this.item.Labels.push({ name: newLabel });
       }
     }
   }
 
+  indexOfLabel(labelName) {
+    let index = -1;
+    this.item.Labels.forEach(function(label, i) {
+      if (label.name === labelName) index = i;
+    });
+    return index;
+  }
+
   removeLabel(label) {
-    let rmIdx = this.item.Labels.indexOf(label);
-    this.item.Labels.splice(rmIdx, 1);
+    let rmIdx = this.indexOfLabel(label.name);
+    if (rmIdx !== -1) this.item.Labels.splice(rmIdx, 1);
   }
 
   removeLastLabel() {
-    if (this.item.Labels.length) this.item.Labels.splice(this.item.Labels.length - 1, 1);
+    if (this.item.Labels.length) {
+      this.item.Labels.splice(this.item.Labels.length - 1, 1);
+    }
   }
 }
 

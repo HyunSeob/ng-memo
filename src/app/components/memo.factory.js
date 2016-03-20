@@ -14,6 +14,8 @@ export function MemoResource($resource) {
         url: 'http://localhost:7777/memos'
       }, update: {
         method: 'PUT'
+      }, label: {
+        method: 'POST'
       }
     });
 }

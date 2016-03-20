@@ -8,7 +8,9 @@ import { default as MainController } from './main/main.ctrl';
 import { default as MainMemoController } from './main/memo/memo.ctrl';
 
 import { PlainTextFilter } from '../app/components/plain-text/plain-text.filter';
-import { LabelHandlerDirective } from '../app/components/label-handler/label-handler.directive'
+import { LabelHandlerDirective } from '../app/components/label-handler/label-handler.directive';
+
+import { MemoResource } from '../app/components/memo.factory';
 
 angular.module('ngMemo', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'toastr', 'contenteditable'])
   .constant('malarkey', malarkey)
@@ -19,4 +21,5 @@ angular.module('ngMemo', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngMessages', 'ng
   .filter('plainText', PlainTextFilter)
   .controller('MainController', MainController)
   .controller('MainMemoController', MainMemoController)
+  .factory('Memo', MemoResource)
   .directive('labelHandler', LabelHandlerDirective);

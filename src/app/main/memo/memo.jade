@@ -2,8 +2,8 @@
   input.memo-title(ng-model="memo.item.title" placeholder="제목을 입력하세요.")
   .memo-body(ng-model="memo.item.body" contenteditable="true" placeholder="본문을 입력하세요.")
   ul.memo-labels
-    li(ng-repeat="label in memo.labels")
-      button.memo-label(ng-click="memo.removeLabel(label)") {{ label }}
+    li(ng-repeat="label in memo.item.Labels")
+      button.memo-label(ng-click="memo.removeLabel(label)") {{ label.name }}
     li
       input.memo-label-input(
         placeholder="여기에 라벨을 입력하세요."

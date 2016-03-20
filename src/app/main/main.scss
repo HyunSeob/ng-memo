@@ -6,8 +6,8 @@
     position: relative;
     z-index: 1;
     width: $aside-width;
-    border-right: 1px solid $border-color;
     height: 100%;
+    border-right: 1px solid $border-color;
     .top {
       width: 100%;
       border-bottom: 1px solid $border-color;
@@ -21,12 +21,12 @@
         padding: 24px;
         display: block;
         text-decoration: none;
-        @include transition(background-color 0.2s ease-out);
+        @include transition(background-color 0.2s ease-out, border 0.2s ease-out);
         &:hover {
           background-color: $personal-superlight;
         }
         &.active {
-          background-color: $personal-light;
+          border-right: 5px solid $personal;
         }
         .memo-preview-title {
           font-size: 16px;

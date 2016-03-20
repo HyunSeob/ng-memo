@@ -6,7 +6,7 @@
     .mid
       a.memo-preview(
         ng-repeat="memo in main.memos"
-        ng-class="{ active: memo.id === main.activeMemoId }"
+        ng-class="{ active: memo.id === main.activeMemo.id }"
         ui-sref="main.memo({ id: memo.id })")
         .memo-preview-title {{ memo.title ? memo.title : '제목을 입력하세요.' }}
         .memo-preview-body {{ memo.body ? memo.body : '본문을 입력하세요.' | plainText }}
@@ -18,6 +18,9 @@
         ng-hide="main.$state.is('main.index')"
         ng-click="main.removeMemo()")
         i.fa.fa-trash-o
-      button.pull-right.personal-button(ng-hide="main.$state.is('main.index')") 저장하기
+      button.pull-right.personal-button(
+        ng-hide="main.$state.is('main.index')"
+        ng-click="main.saveMemo()"
+      ) 저장하기
     .mid(ui-view="")
       

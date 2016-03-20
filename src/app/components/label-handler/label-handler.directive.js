@@ -11,7 +11,6 @@ export function LabelHandlerDirective() {
     },
     link: function (scope, element) {
       element.on('keydown', function(event) {
-        console.log(event.keyCode);
         if (event.keyCode === 9
         || event.keyCode === 13) {
           event.preventDefault();

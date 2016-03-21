@@ -1,15 +1,19 @@
 .main-ctrl(ng-controller="MainController")
   aside
     .top
-      select
-        option(ng-repeat="label in main.labels") {{ label.name }}
+      .label-select
+        select(ng-model="main.labelFilter" ng-change="main.filterByLabel()")
+          option(value="") 전체보기({{ main.memos.length }})
+          option(ng-repeat="label in main.labels" value="{{ label.name }}") {{ label.name }}({{ label.Memos.length }})
     .mid
       a.memo-preview(
-        ng-repeat="memo in main.memos"
+        ng-repeat="memo in main.filteredMemos"
         ng-class="{ active: memo.id === main.activeMemo.id }"
+        id="memo{{ memo.id }}"
         ui-sref="main.memo({ id: memo.id })")
         .memo-preview-title {{ memo.title ? memo.title : '제목을 입력하세요.' }}
         .memo-preview-body {{ memo.body ? memo.body : '본문을 입력하세요.' | plainText }}
+        .memo-preview-time {{ memo.updatedAt | dateTime }}
   .body
     .top
       button.pull-left.icon-button(ng-click="main.addMemo()")
@@ -23,4 +27,3 @@
         ng-click="main.saveMemo()"
       ) 저장하기
     .mid(ui-view="")
-      

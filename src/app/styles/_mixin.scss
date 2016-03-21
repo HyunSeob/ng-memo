@@ -44,6 +44,12 @@ $top-height: 48px;
   border-radius:         $radius;
 }
 
+@mixin appearance($appearance) {
+  -webkit-appearance: $appearance;
+  -moz-appearance:    $appearance;
+  appearance:         $appearance;
+}
+
 @mixin vertical-center {
   position: absolute;
   top:      50%;

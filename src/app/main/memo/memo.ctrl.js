@@ -3,24 +3,23 @@ class MainMemoController {
     'ngInject';
     let mainScope = $scope.$parent.$parent.main;
     if(mainScope.memos) {
-      mainScope.memos.forEach(function(memo) {
+      mainScope.memos.forEach((memo) => {
         if (memo.id === parseInt($stateParams.id)) {
           this.item = mainScope.activeMemo = memo;
         }
-      }.bind(this));
+      });
     } else {
-      $scope.$on('memosLoaded', function() {
-        mainScope.memos.forEach(function(memo) {
+      $scope.$on('memosLoaded', () => {
+        mainScope.memos.forEach((memo) => {
           if (memo.id === parseInt($stateParams.id)) {
             this.item = mainScope.activeMemo = memo;
           }
-        }.bind(this));
-      }.bind(this));
+        });
+      });
     }
 
     this.$scope = $scope;
     this.toastr = toastr;
-    // this.Memo = Memo;
   }
 
   addLabel(newLabel) {
@@ -37,7 +36,7 @@ class MainMemoController {
 
   indexOfLabel(labelName) {
     let index = -1;
-    this.item.Labels.forEach(function(label, i) {
+    this.item.Labels.forEach((label, i) => {
       if (label.name === labelName) index = i;
     });
     return index;
@@ -56,4 +55,4 @@ class MainMemoController {
 }
 
 MainMemoController.$inject = ['$scope', '$stateParams', 'toastr', 'Memo'];
-export default MainMemoController;
+export { MainMemoController };

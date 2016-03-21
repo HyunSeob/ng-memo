@@ -18,5 +18,5 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'MainMemoController',
       controllerAs: 'memo'
     });
-  // $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/');
 }

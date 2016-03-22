@@ -48,6 +48,9 @@ $top-height: 48px;
   -webkit-appearance: $appearance;
   -moz-appearance:    $appearance;
   appearance:         $appearance;
+  &::-ms-expand {
+    display: none;
+  }
 }
 
 @mixin vertical-center {

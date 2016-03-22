@@ -1,4 +1,4 @@
 export function LabelResource($resource) {
   'ngInject';
-  return $resource('http://localhost:7777/labels');
+  return $resource('http://192.168.35.140:7777/labels');
 }

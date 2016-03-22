@@ -4,7 +4,7 @@
   padding: 24px;
   width: 100%;
   height: calc(100% - #{$top-height});
-  overflow: scroll;
+  overflow-y: scroll;
   input.memo-title {
     display: block;
     width: calc(100% - #{$top-height});
@@ -17,7 +17,7 @@
   .memo-body {
     display: block;
     width: calc(100% - #{$top-height});
-    min-height: calc(100% - 106px);
+    height: calc(100% - 106px);
     border: 0;
     outline: 0;
     font-size: 14px;
@@ -47,6 +47,7 @@
         font-size: 14px;
         outline: 0;
         border: 0;
+        width: 200px;
         @include placeholder;
       }
     }

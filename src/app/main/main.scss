@@ -37,7 +37,7 @@
     .mid {
       width: 100%;
       height: calc(100% - 72px);
-      overflow: scroll;
+      overflow-y: scroll;
       padding: 12px 0;
       a.memo-preview {
         padding: 12px 24px;
@@ -92,6 +92,7 @@
         font-size: 18px;
         padding: 0 8px;
         height: 30px;
+        cursor: pointer;
         @include text-button;
         @include transition(color 0.2s ease-out);
         &:hover {

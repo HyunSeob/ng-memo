@@ -1,5 +1,35 @@
 @import '../styles/mixin';
 
+button.personal-button {
+  height: 30px;
+  line-height: 30px;
+  padding: 0 12px;
+  font-size: 14px;
+  @include personal-button;
+}
+
+button.warning-button {
+  height: 30px;
+  line-height: 30px;
+  padding: 0 12px;
+  font-size: 14px;
+  @include warning-button;
+}
+
+button.icon-button {
+  display: block;
+  color: $text-gray-semilight;
+  font-size: 18px;
+  padding: 0 8px;
+  height: 30px;
+  cursor: pointer;
+  @include text-button;
+  @include transition(color 0.2s ease-out);
+  &:hover {
+    color: $personal;
+  }
+}
+
 .main-ctrl {
   @include full-screen;
   aside {
@@ -36,9 +66,10 @@
     }
     .mid {
       width: 100%;
-      height: calc(100% - 72px);
+      height: calc(100% - 120px);
       overflow-y: scroll;
       padding: 12px 0;
+      border-bottom: 1px solid $border-color;
       p.no-memo {
         text-align: center;
         color: $text-gray;
@@ -50,12 +81,22 @@
         padding: 12px 24px;
         display: block;
         text-decoration: none;
+        position: relative;
         @include transition(background-color 0.2s ease-out, border 0.2s ease-out);
         &:hover {
           background-color: $personal-superlight;
         }
         &.active {
           border-right: 5px solid $personal;
+        }
+        &.checked:after {
+          position: absolute;
+          font-family: 'FontAwesome';
+          content: '\f00c';
+          color: $personal;
+          font-size: 12px;
+          right: 24px;
+          bottom: 12px;
         }
         .memo-preview-title {
           font-size: 16px;
@@ -77,6 +118,10 @@
         }
       }
     }
+    .bot {
+      height: $top-height;
+      padding: 8px 24px;
+    }
   }
   .body {
     @include full-screen;
@@ -86,26 +131,6 @@
       height: calc(#{$top-height} - 16px);
       border-bottom: 1px solid $border-color;
       padding: 8px 12px;
-      button.personal-button {
-        height: 30px;
-        line-height: 30px;
-        padding: 0 12px;
-        font-size: 14px;
-        @include personal-button;
-      }
-      button.icon-button {
-        display: block;
-        color: $text-gray-semilight;
-        font-size: 18px;
-        padding: 0 8px;
-        height: 30px;
-        cursor: pointer;
-        @include text-button;
-        @include transition(color 0.2s ease-out);
-        &:hover {
-          color: $personal;
-        }
-      }
     }
     .mid {
       width: 100%;

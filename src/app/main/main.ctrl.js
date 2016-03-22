@@ -26,6 +26,42 @@ export class MainController {
     .catch(() => this.toastr.error('라벨 목록을 불러오는데 실패했습니다.'));
   }
 
+  checkMemo($event, memo) {
+    if (this.multiMode) {
+      $event.preventDefault();
+      memo.checked = !memo.checked;
+    }
+  }
+
+  uncheckAll() {
+    this.multiMode = false;
+    this.memos.forEach((memo) => {
+      memo.checked = false;
+    });
+  }
+
+  removeCheckedMemos() {
+    let checkedMemos = this.memos
+    .filter((memo) => memo.checked)
+    .map((memo) => memo.id);
+    let includeActive = checkedMemos.indexOf(this.activeMemo.id) + 1;
+
+    if (checkedMemos.length) {
+      this.Memo
+      .removeMemos({ memos: checkedMemos.join(',') })
+      .$promise.then(() => {
+        this.toastr.success('메모가 삭제되었습니다.');
+        this.loadLabels();
+        this.loadMemos();
+        this.filterByLabel();
+        if (includeActive) this.$state.go('main.index');
+      })
+      .catch(() => this.toastr.error('문제가 발생했습니다. 다시 시도해주세요.'));
+    } else {
+      this.toastr.warning('하나 이상의 메모를 선택해주세요.');
+    }
+  }
+
   addMemo() {
     this.Memo
     .save({ memo: { title: '', body: '' } })

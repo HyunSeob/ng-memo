@@ -10,12 +10,22 @@
         | 표시할 메모가 없습니다.
       a.memo-preview(
         ng-repeat="memo in main.filteredMemos"
-        ng-class="{ active: memo.id === main.activeMemo.id }"
+        ng-class="{ active: memo.id === main.activeMemo.id, checked: memo.checked }"
         id="memo{{ memo.id }}"
-        ui-sref="main.memo({ id: memo.id })")
+        ui-sref="main.memo({ id: memo.id })"
+        ng-click="main.checkMemo($event, memo)")
         .memo-preview-title {{ memo.title ? memo.title : '제목을 입력하세요.' }}
         .memo-preview-body {{ memo.body ? memo.body : '본문을 입력하세요.' | plainText }}
         .memo-preview-time {{ memo.updatedAt | dateTime }}
+    .bot
+      button.pull-left.icon-button(
+        ng-show="main.multiMode"
+        ng-click="main.removeCheckedMemos()")
+        i.fa.fa-trash-o
+      button.pull-right.personal-button(ng-click="main.multiMode = true" ng-show="!main.multiMode")
+        | 선택
+      button.pull-right.warning-button(ng-click="main.uncheckAll()" ng-show="main.multiMode")
+        | 취소
   .body
     .top
       button.pull-left.icon-button(ng-click="main.addMemo()")

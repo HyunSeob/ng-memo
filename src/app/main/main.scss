@@ -39,6 +39,13 @@
       height: calc(100% - 72px);
       overflow-y: scroll;
       padding: 12px 0;
+      p.no-memo {
+        text-align: center;
+        color: $text-gray;
+        margin: auto;
+        width: 100%;
+        @include vertical-center;
+      }
       a.memo-preview {
         padding: 12px 24px;
         display: block;

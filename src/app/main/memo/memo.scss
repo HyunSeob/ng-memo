@@ -17,12 +17,11 @@
   .memo-body {
     display: block;
     width: calc(100% - #{$top-height});
-    height: calc(100% - 106px);
+    min-height: calc(100% - 106px);
     border: 0;
     outline: 0;
     font-size: 14px;
     margin-bottom: 12px;
-    overflow: hidden;
     @include placeholder;
   }
   ul.memo-labels {

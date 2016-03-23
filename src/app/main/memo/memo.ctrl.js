@@ -1,5 +1,5 @@
 class MainMemoController {
-  constructor($scope, $stateParams, toastr) {
+  constructor($scope, $state, $stateParams, toastr) {
     'ngInject';
     let mainScope = $scope.$parent.$parent.main;
     if(mainScope.memos) {
@@ -8,6 +8,7 @@ class MainMemoController {
           this.item = mainScope.activeMemo = memo;
         }
       });
+      if (!this.item) $state.go('main.index');
     } else {
       $scope.$on('memosLoaded', () => {
         mainScope.memos.forEach((memo) => {
@@ -15,6 +16,7 @@ class MainMemoController {
             this.item = mainScope.activeMemo = memo;
           }
         });
+        if (!this.item) $state.go('main.index');
       });
     }
 
@@ -54,5 +56,4 @@ class MainMemoController {
   }
 }
 
-MainMemoController.$inject = ['$scope', '$stateParams', 'toastr', 'Memo'];
 export { MainMemoController };

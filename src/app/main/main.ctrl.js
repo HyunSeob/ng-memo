@@ -152,10 +152,10 @@ export class MainController {
     if (this.activeMemo) {
       this.Memo
       .remove({ id: this.activeMemo.id })
-      .$promise.then(() => {
+      .$promise.then(() => this.loadLabels())
+      .then(() => {
         this.toastr.success('메모가 삭제되었습니다.');
         this.memos.splice(this.getActiveMemoIndex(), 1);
-        this.loadLabels();
         this.filterByLabel();
         this.$state.go('main.index');
       })

@@ -6,5 +6,4 @@ function DateTimeFilter($window) {
   };
 }
 
-DateTimeFilter.$inject = ['$window'];
 export { DateTimeFilter };

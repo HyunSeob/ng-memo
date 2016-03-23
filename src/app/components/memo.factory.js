@@ -14,6 +14,10 @@ export function MemoResource($resource) {
         url: 'http://localhost:7777/memos'
       }, update: {
         method: 'PUT'
+      }, addLabel: {
+        method: 'PUT',
+        url: 'http://localhost:7777/memos',
+        isArray: true
       }, removeMemos: {
         method: 'DELETE',
         url: 'http://localhost:7777/memos'

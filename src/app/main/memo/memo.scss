@@ -34,13 +34,22 @@
       float: left;
       button.memo-label {
         font-size: 14px;
-        padding: 2px 6px;
+        padding: 2px 6px 2px 20px;
         border: 0;
         outline: 0;
         background-color: $personal;
         margin-right: 8px;
         color: #fff;
         cursor: pointer;
+        position: relative;
+        &:before {
+          font-family: 'FontAwesome';
+          content: '\f292';
+          font-size: 12px;
+          position: absolute;
+          top: 4px;
+          left: 6px;
+        }
       }
       input.memo-label-input {
         font-size: 14px;

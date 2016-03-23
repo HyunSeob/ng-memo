@@ -1,4 +1,4 @@
-export function LabelHandlerDirective() {
+export function LabelHandlerDirective($filter) {
   'ngInject';
 
   let directive = {
@@ -15,7 +15,7 @@ export function LabelHandlerDirective() {
         || event.keyCode === 13) {
           event.preventDefault();
           scope.$apply(function() {
-            scope.enterKey({ newLabel: scope.labelString.replace(/[^\wㄱ-ㅎㅏ-ㅣ가-힣]/gi, '') });
+            scope.enterKey({ newLabel: $filter('label')(scope.labelString) });
             scope.labelString = '';
           });
         } else if (event.keyCode === 8) {

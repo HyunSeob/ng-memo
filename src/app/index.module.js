@@ -9,6 +9,7 @@ import { MainMemoController } from './main/memo/memo.ctrl';
 
 import { PlainTextFilter } from '../app/components/plain-text.filter';
 import { DateTimeFilter } from '../app/components/date-time.filter';
+import { LabelFilter } from '../app/components/label.filter';
 
 import { LabelHandlerDirective } from '../app/components/label-handler.directive';
 import { ContenteditableDirective } from '../app/components/contenteditable.directive';
@@ -25,7 +26,8 @@ angular.module('ngMemo', [
   'ngResource',
   'ui.router',
   'toastr',
-  'duScroll'])
+  'duScroll',
+  'ngDialog'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
   .config(config)
@@ -33,6 +35,7 @@ angular.module('ngMemo', [
   .run(runBlock)
   .filter('plainText', PlainTextFilter)
   .filter('dateTime', DateTimeFilter)
+  .filter('label', LabelFilter)
   .controller('MainController', MainController)
   .controller('MainMemoController', MainMemoController)
   .factory('Memo', MemoResource)

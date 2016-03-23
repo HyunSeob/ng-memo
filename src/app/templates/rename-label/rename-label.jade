@@ -1,0 +1,14 @@
+.rename-label-template
+  ul.label-list
+    li(ng-repeat="label in main.labels")
+      button.icon-button.edit-button(
+        ng-click="label.isEditing = true; label.newName = label.name"
+        ng-show="!label.isEditing")
+        i.fa.fa-edit
+      button.icon-button.save-button(
+        ng-click="main.renameLabel(label)"
+        ng-show="label.isEditing")
+        i.fa.fa-save
+      label(ng-show="!label.isEditing") {{ label.name }}
+      input(type="text" ng-model="label.newName" ng-show="label.isEditing")
+  

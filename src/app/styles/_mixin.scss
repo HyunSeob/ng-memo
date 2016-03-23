@@ -4,6 +4,8 @@ $personal-superlight: lighten($personal, 33);
 $personal-dark: darken($personal, 25);
 $warning: #F361A6;
 $warning-dark: darken($warning, 25);
+$default: #E4E4E4;
+$default-dark: darken($default, 25);
 
 $border-color: #eee;
 $text-black: #333;
@@ -72,6 +74,15 @@ $top-height: 48px;
   border: 0;
   cursor: pointer;
   @include border-radius(2px);
+}
+
+@mixin default-button {
+  color: $text-gray;
+  background-color: $default;
+  @include button;
+  &:hover {
+    background-color: $default-dark;
+  }
 }
 
 @mixin personal-button {
